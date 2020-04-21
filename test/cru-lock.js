@@ -53,8 +53,45 @@ describe('TokenLock Contract Tests', function() {
 
     });
 
+    it("[Migrate - Withdraw] - Should try to withdraw for " + config.accounts[1].name + " and fail", async () => {
+
+    });
+
     it("[Migrate] - Should migrate  " + config.accounts[1].name , async () => {
 
     });
+
+    it("[Migrate] - Check Users Table to observe migrated users , async () => {
+
+    });
+
+    it("[Refresh] - Refresh locks for user  " + config.accounts[1].name + " and period 1" , async () => {
+
+    });
+
+    it("[Refresh] - Refresh locks for user  " + config.accounts[1].name + " and period 2" , async () => {
+
+    });
+
+    it("[Refresh] - Refresh locks for user  " + config.accounts[1].name + " and period 3" , async () => {
+
+    });
+
+    it("[Refresh] - Refresh locks for unknown user "  , async () => {
+
+    });
+
+    it("[Refresh] - Refresh locks for unknown user "  , async () => {
+
+    });
+
+    it("[Locks] - Check against lock table and user nbalance"  , async () => {
+
+    });
+
+    it("[Withdraw] - Should withdraw to " + config.accounts[1].name + " and update locks table", async () => {
+
+    });
+
 
 });
