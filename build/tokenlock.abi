@@ -1,0 +1,205 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Tue Apr 14 17:39:38 2020",
+    "version": "eosio::abi/1.1",
+    "structs": [
+        {
+            "name": "add",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "parent_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "datetime",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "algorithm",
+                    "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "int64"
+                }
+            ]
+        },
+        {
+            "name": "history",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "lock_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "lock_parent_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "created",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "algorithm",
+                    "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "locks",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "created",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "last_distribution_at",
+                    "type": "time_point_sec"
+                },
+                {
+                    "name": "algorithm",
+                    "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "available",
+                    "type": "asset"
+                },
+                {
+                    "name": "withdrawed",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "migrate",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "refresh",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "users",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "migrated_at",
+                    "type": "time_point_sec"
+                }
+            ]
+        },
+        {
+            "name": "withdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "add",
+            "type": "add",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "migrate",
+            "type": "migrate",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "refresh",
+            "type": "refresh",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "withdraw",
+            "type": "withdraw",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "history",
+            "type": "history",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "locks",
+            "type": "locks",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "users",
+            "type": "users",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": [],
+    "abi_extensions": []
+}
