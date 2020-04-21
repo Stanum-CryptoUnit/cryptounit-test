@@ -61,7 +61,7 @@ describe('TokenLock Contract Tests', function() {
 
     });
 
-    it("[Migrate] - Check Users Table to observe migrated users , async () => {
+    it("[Migrate] - Check Users Table to observe migrated users ", async () => {
 
     });
 
