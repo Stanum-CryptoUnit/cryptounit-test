@@ -10,7 +10,7 @@ Infeos is npm based framework. To start using it you just need to install via np
 
 In terminal: npm install infeos
 
-#Initialize  project
+# Initialize  project
 
 In terminal: git clone "path to your repo"
 
