@@ -53,6 +53,26 @@ const nodeConfig = async () => {
             }
         })
 
+    await eosIOContract.transfer(config.accounts[config.accounts.length - 1].name,
+        config.accounts[1].name,
+        "1 CRU",
+        "Initial transfer", {
+            authorization: {
+                actor: config.accounts[config.accounts.length - 1].name,
+                permission: "active"
+            }
+        })
+
+    await eosIOContract.transfer(config.accounts[config.accounts.length - 1].name,
+        config.accounts[2].name,
+        "1 CRU",
+        "Initial transfer", {
+            authorization: {
+                actor: config.accounts[config.accounts.length - 1].name,
+                permission: "active"
+            }
+        })
+
     console.log("Initial Genesis balance - " + await infeos.EOSIOApi.rpc.get_currency_balance(config.account.name,
         config.accounts[0].name, 'CRU'))
 
