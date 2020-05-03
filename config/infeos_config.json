@@ -159,6 +159,48 @@
       }
     },
     {
+      "name": "cruuser4",
+      "permissions": {
+        "owner": {
+          "publicKey": "EOS69i58UJci6CQQ1JTAxXUcSFHhKDwMV8CaK3ieCJJsWrQjL3v5H",
+          "privateKey": "5KVRsQ3ob22TDsC13emvjD3Sghy6vPramVKtCYoY4cK3nHRDp9m"
+        },
+        "active": {
+          "publicKey": "EOS5fRobovJ2t5KST65k6QCEHF7D6Ja67tEpoSjYEpb9kCsGbTazx",
+          "privateKey": "5JM61kNg2R6GGkm68cTHYhaG22za7Jy7EBRANGVD1HXkxA16co3"
+        },
+        "system": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        },
+        "eosio.code": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        }
+      }
+    },
+    {
+      "name": "cruuser5",
+      "permissions": {
+        "owner": {
+          "publicKey": "EOS69i58UJci6CQQ1JTAxXUcSFHhKDwMV8CaK3ieCJJsWrQjL3v5H",
+          "privateKey": "5KVRsQ3ob22TDsC13emvjD3Sghy6vPramVKtCYoY4cK3nHRDp9m"
+        },
+        "active": {
+          "publicKey": "EOS5fRobovJ2t5KST65k6QCEHF7D6Ja67tEpoSjYEpb9kCsGbTazx",
+          "privateKey": "5JM61kNg2R6GGkm68cTHYhaG22za7Jy7EBRANGVD1HXkxA16co3"
+        },
+        "system": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        },
+        "eosio.code": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        }
+      }
+    },
+    {
       "name": "reserve",
       "permissions": {
         "owner": {

@@ -26,9 +26,9 @@ const nodeConfig = async () => {
     /**
      * Setting up Initial env for CRU
      */
-    config.accounts.forEach(async (item) =>
+    config.accounts.forEach(async (item) =>{
         await EOSIONode.createAccount(item.name, item.permissions.system.publicKey,
-            item.permissions.system.publicKey)
+            item.permissions.system.publicKey)}
     )
 
 
