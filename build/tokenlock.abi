@@ -1,5 +1,5 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Tue Apr 14 17:39:38 2020",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Wed Apr 29 16:40:04 2020",
     "version": "eosio::abi/1.1",
     "structs": [
         {
@@ -29,6 +29,20 @@
                 {
                     "name": "amount",
                     "type": "int64"
+                }
+            ]
+        },
+        {
+            "name": "debts",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
                 }
             ]
         },
@@ -107,6 +121,10 @@
                 {
                     "name": "username",
                     "type": "name"
+                },
+                {
+                    "name": "public_key",
+                    "type": "public_key"
                 }
             ]
         },
@@ -177,6 +195,13 @@
         }
     ],
     "tables": [
+        {
+            "name": "debts",
+            "type": "debts",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
         {
             "name": "history",
             "type": "history",
