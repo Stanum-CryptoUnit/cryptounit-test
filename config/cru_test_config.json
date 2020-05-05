@@ -28,108 +28,340 @@
             "parentId": null,
             "datetime": "2019-08-04 15:49:41",
             "algorithm": "algorithm1",
-            "amount": "25000"
+            "amount": 25000
           },
           {
             "id": "30341862",
             "parentId": null,
             "datetime": "2019-09-01 05:09:22",
             "algorithm": "algorithm2",
-            "amount": "1610"
+            "amount": 1610
           },
           {
             "id": "30755529",
             "parentId": null,
             "datetime": "2019-09-09 14:20:37",
             "algorithm": "algorithm2",
-            "amount": "2500"
+            "amount": 2500
           },
           {
             "id": "30755530",
             "parentId": null,
             "datetime": "2019-09-09 14:20:37",
             "algorithm": "algorithm1",
-            "amount": "25000"
+            "amount": 25000
           },
           {
             "id": "31384370",
             "parentId": null,
             "datetime": "2019-09-15 10:47:35",
             "algorithm": "algorithm2",
-            "amount": "2500"
+            "amount": 2500
           },
           {
             "id": "31384371",
             "parentId": null,
             "datetime": "2019-09-15 10:47:35",
             "algorithm": "algorithm1",
-            "amount": "25000"
+            "amount": 25000
           },
           {
             "id": "33031938",
             "parentId": null,
             "datetime": "2019-10-01 05:09:31",
             "algorithm": "algorithm2",
-            "amount": "280"
+            "amount": 280
           },
           {
             "id": "35399831",
             "parentId": null,
             "datetime": "2019-11-01 05:09:44",
             "algorithm": "algorithm2",
-            "amount": "130"
+            "amount": 130
           },
           {
             "id": "35481627",
             "parentId": null,
             "datetime": "2019-11-04 22:54:52",
             "algorithm": "algorithm2",
-            "amount": "25000"
+            "amount": 25000
           },
           {
             "id": "35487617",
             "parentId": null,
             "datetime": "2019-11-04 22:55:01",
             "algorithm": "algorithm2",
-            "amount": "25000"
+            "amount": 25000
           },
           {
             "id": "35487806",
             "parentId": null,
             "datetime": "2019-11-04 22:55:01",
             "algorithm": "algorithm2",
-            "amount": "25000"
+            "amount": 25000
           },
           {
             "id": "36585391",
             "parentId": null,
             "datetime": "2019-12-01 05:08:56",
             "algorithm": "algorithm2",
-            "amount": "34"
+            "amount": 34
           },
           {
             "id": "37891742",
             "parentId": null,
             "datetime": "2020-01-01 05:09:57",
             "algorithm": "algorithm2",
-            "amount": "9"
+            "amount": 9
           },
           {
             "id": "38095951",
             "parentId": null,
             "datetime": "2020-01-07 19:07:34",
             "algorithm": "algorithm2",
-            "amount": "30000"
+            "amount": 30000
           },
           {
             "id": "38581187",
             "parentId": null,
             "datetime": "2020-01-08 17:37:34",
             "algorithm": "algorithm2",
-            "amount": "18706"
+            "amount": 18706
+          }
+        ]
+      }
+    },
+    {
+      "name": "testuser2",
+      "permissions": {
+        "owner": {
+          "publicKey": "EOS69i58UJci6CQQ1JTAxXUcSFHhKDwMV8CaK3ieCJJsWrQjL3v5H",
+          "privateKey": "5KVRsQ3ob22TDsC13emvjD3Sghy6vPramVKtCYoY4cK3nHRDp9m"
+        },
+        "active": {
+          "publicKey": "EOS5fRobovJ2t5KST65k6QCEHF7D6Ja67tEpoSjYEpb9kCsGbTazx",
+          "privateKey": "5JM61kNg2R6GGkm68cTHYhaG22za7Jy7EBRANGVD1HXkxA16co3"
+        },
+        "system": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        },
+        "eosio.code": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        }
+      },
+      "transactions": {
+        "finalAmount": "205769",
+        "set": [
+          {
+            "id": 22643569,
+            "parentId": 0,
+            "datetime": "2019-03-30 21:08:35",
+            "algorithm": "algorithm1",
+            "amount": 400000
+          },
+          {
+            "id": 23283038,
+            "parentId": 0,
+            "datetime": "2019-04-13 16:09:36",
+            "algorithm": "algorithm1",
+            "amount": 350000
+          },
+          {
+            "id": 23732938,
+            "parentId": 0,
+            "datetime": "2019-05-02 15:51:11",
+            "algorithm": "algorithm2",
+            "amount": 813739
+          },
+          {
+            "id": 23754680,
+            "parentId": 0,
+            "datetime": "2019-05-03 00:39:55",
+            "algorithm": "algorithm1",
+            "amount": 125000
+          },
+          {
+            "id": 24167313,
+            "parentId": 0,
+            "datetime": "2019-05-20 13:19:00",
+            "algorithm": "algorithm1",
+            "amount": 125000
+          },
+          {
+            "id": 24834879,
+            "parentId": 0,
+            "datetime": "2019-06-01 05:04:23",
+            "algorithm": "algorithm2",
+            "amount": 169637
+          },
+          {
+            "id": 25658437,
+            "parentId": 0,
+            "datetime": "2019-06-21 11:16:35",
+            "algorithm": "algorithm1",
+            "amount": 100000
+          },
+          {
+            "id": 26390569,
+            "parentId": 0,
+            "datetime": "2019-07-01 05:05:01",
+            "algorithm": "algorithm2",
+            "amount": 127442
+          },
+          {
+            "id": 26786527,
+            "parentId": 0,
+            "datetime": "2019-07-13 00:16:31",
+            "algorithm": "algorithm2",
+            "amount": 160000
+          },
+          {
+            "id": 27076908,
+            "parentId": 0,
+            "datetime": "2019-07-22 16:07:40",
+            "algorithm": "algorithm1",
+            "amount": 160000
+          },
+          {
+            "id": 28075448,
+            "parentId": 0,
+            "datetime": "2019-08-01 05:04:57",
+            "algorithm": "algorithm2",
+            "amount": 132200
+          },
+          {
+            "id": 30219659,
+            "parentId": 0,
+            "datetime": "2019-08-31 23:24:27",
+            "algorithm": "algorithm1",
+            "amount": 45000
+          },
+          {
+            "id": 30289812,
+            "parentId": 0,
+            "datetime": "2019-09-01 05:05:19",
+            "algorithm": "algorithm2",
+            "amount": 67372
+          },
+          {
+            "id": 31401866,
+            "parentId": 0,
+            "datetime": "2019-09-15 12:35:44",
+            "algorithm": "algorithm2",
+            "amount": 2000
+          },
+          {
+            "id": 31401867,
+            "parentId": 0,
+            "datetime": "2019-09-15 12:35:44",
+            "algorithm": "algorithm1",
+            "amount": 20000
+          },
+          {
+            "id": 32980066,
+            "parentId": 0,
+            "datetime": "2019-10-01 05:05:35",
+            "algorithm": "algorithm2",
+            "amount": 13330
+          },
+          {
+            "id": 35265658,
+            "parentId": 0,
+            "datetime": "2019-10-31 20:49:11",
+            "algorithm": "algorithm2",
+            "amount": 2000
+          },
+          {
+            "id": 35265659,
+            "parentId": 0,
+            "datetime": "2019-10-31 20:49:11",
+            "algorithm": "algorithm1",
+            "amount": 20000
+          },
+          {
+            "id": 35354215,
+            "parentId": 0,
+            "datetime": "2019-11-01 05:05:59",
+            "algorithm": "algorithm2",
+            "amount": 3180
+          },
+          {
+            "id": 36564574,
+            "parentId": 0,
+            "datetime": "2019-12-01 05:06:00",
+            "algorithm": "algorithm2",
+            "amount": 647
+          },
+          {
+            "id": 37870638,
+            "parentId": 0,
+            "datetime": "2020-01-01 05:07:02",
+            "algorithm": "algorithm2",
+            "amount": 424
+          },
+          {
+            "id": 38489142,
+            "parentId": 0,
+            "datetime": "2020-01-08 17:34:27",
+            "algorithm": "algorithm2",
+            "amount": 283697
+          },
+          {
+            "id": 39065572,
+            "parentId": 0,
+            "datetime": "2020-01-15 21:04:53",
+            "algorithm": "algorithm2",
+            "amount": 180
+          },
+          {
+            "id": 39785945,
+            "parentId": 0,
+            "datetime": "2020-01-31 22:55:20",
+            "algorithm": "algorithm1",
+            "amount": 2500
+          },
+          {
+            "id": 39805334,
+            "parentId": 0,
+            "datetime": "2020-02-01 05:12:55",
+            "algorithm": "algorithm2",
+            "amount": 656
+          },
+          {
+            "id": 39889806,
+            "parentId": 0,
+            "datetime": "2020-02-02 10:00:05",
+            "algorithm": "algorithm1",
+            "amount": 1000
+          },
+          {
+            "id": 41241573,
+            "parentId": 0,
+            "datetime": "2020-03-01 05:14:18",
+            "algorithm": "algorithm2",
+            "amount": 1019
+          },
+          {
+            "id": 41335364,
+            "parentId": 0,
+            "datetime": "2020-03-03 02:09:53",
+            "algorithm": "algorithm1",
+            "amount": 1000
+          },
+          {
+            "id": 44213020,
+            "parentId": 0,
+            "datetime": "2020-04-01 05:15:56",
+            "algorithm": "algorithm2",
+            "amount": 609
           }
         ]
       }
     }
   ]
 }
+
+
+

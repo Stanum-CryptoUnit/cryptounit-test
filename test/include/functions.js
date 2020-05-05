@@ -17,6 +17,8 @@ const getLastTransactionId = async (code, scope, table) => {
     return res.rows.length > 0 ? res.rows[res.rows.length - 1] : null
 }
 
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
 
 module.exports = {
     assertThrowsAsync: async (test, error, details) => {
@@ -44,6 +46,8 @@ module.exports = {
     },
 
     getLastTransactionId: getLastTransactionId,
+
+    delay: delay,
 
     getNextHistoryId: async (scope) => {
         let rs = await getLastTransactionId(config.tokenLockContract, scope, 'history')
