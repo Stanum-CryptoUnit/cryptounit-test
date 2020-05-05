@@ -1,0 +1,135 @@
+{
+  "accounts": [
+    {
+      "name": "testuser1",
+      "permissions": {
+        "owner": {
+          "publicKey": "EOS69i58UJci6CQQ1JTAxXUcSFHhKDwMV8CaK3ieCJJsWrQjL3v5H",
+          "privateKey": "5KVRsQ3ob22TDsC13emvjD3Sghy6vPramVKtCYoY4cK3nHRDp9m"
+        },
+        "active": {
+          "publicKey": "EOS5fRobovJ2t5KST65k6QCEHF7D6Ja67tEpoSjYEpb9kCsGbTazx",
+          "privateKey": "5JM61kNg2R6GGkm68cTHYhaG22za7Jy7EBRANGVD1HXkxA16co3"
+        },
+        "system": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        },
+        "eosio.code": {
+          "publicKey": "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+          "privateKey": "5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3"
+        }
+      },
+      "transactions": {
+        "finalAmount": "205769",
+        "set": [
+          {
+            "id": "28204537",
+            "parentId": null,
+            "datetime": "2019-08-04 15:49:41",
+            "algorithm": "algorithm1",
+            "amount": "25000"
+          },
+          {
+            "id": "30341862",
+            "parentId": null,
+            "datetime": "2019-09-01 05:09:22",
+            "algorithm": "algorithm2",
+            "amount": "1610"
+          },
+          {
+            "id": "30755529",
+            "parentId": null,
+            "datetime": "2019-09-09 14:20:37",
+            "algorithm": "algorithm2",
+            "amount": "2500"
+          },
+          {
+            "id": "30755530",
+            "parentId": null,
+            "datetime": "2019-09-09 14:20:37",
+            "algorithm": "algorithm1",
+            "amount": "25000"
+          },
+          {
+            "id": "31384370",
+            "parentId": null,
+            "datetime": "2019-09-15 10:47:35",
+            "algorithm": "algorithm2",
+            "amount": "2500"
+          },
+          {
+            "id": "31384371",
+            "parentId": null,
+            "datetime": "2019-09-15 10:47:35",
+            "algorithm": "algorithm1",
+            "amount": "25000"
+          },
+          {
+            "id": "33031938",
+            "parentId": null,
+            "datetime": "2019-10-01 05:09:31",
+            "algorithm": "algorithm2",
+            "amount": "280"
+          },
+          {
+            "id": "35399831",
+            "parentId": null,
+            "datetime": "2019-11-01 05:09:44",
+            "algorithm": "algorithm2",
+            "amount": "130"
+          },
+          {
+            "id": "35481627",
+            "parentId": null,
+            "datetime": "2019-11-04 22:54:52",
+            "algorithm": "algorithm2",
+            "amount": "25000"
+          },
+          {
+            "id": "35487617",
+            "parentId": null,
+            "datetime": "2019-11-04 22:55:01",
+            "algorithm": "algorithm2",
+            "amount": "25000"
+          },
+          {
+            "id": "35487806",
+            "parentId": null,
+            "datetime": "2019-11-04 22:55:01",
+            "algorithm": "algorithm2",
+            "amount": "25000"
+          },
+          {
+            "id": "36585391",
+            "parentId": null,
+            "datetime": "2019-12-01 05:08:56",
+            "algorithm": "algorithm2",
+            "amount": "34"
+          },
+          {
+            "id": "37891742",
+            "parentId": null,
+            "datetime": "2020-01-01 05:09:57",
+            "algorithm": "algorithm2",
+            "amount": "9"
+          },
+          {
+            "id": "38095951",
+            "parentId": null,
+            "datetime": "2020-01-07 19:07:34",
+            "algorithm": "algorithm2",
+            "amount": "30000"
+          },
+          {
+            "id": "38581187",
+            "parentId": null,
+            "datetime": "2020-01-08 17:37:34",
+            "algorithm": "algorithm2",
+            "amount": "18706"
+          }
+        ]
+      }
+    }
+  ]
+}

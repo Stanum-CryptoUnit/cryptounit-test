@@ -1,4 +1,5 @@
 const config = require('./../config/infeos_config.json');
+const testConfig = require('./../config/cru_test_config.json');
 const infeos = require('infeos').init();
 const {assertThrowsAsync, getTable, getLastTransactionId, getNextHistoryId} = require('./include/functions')
 const EOSIOApi = infeos.EOSIOApi;
@@ -178,6 +179,27 @@ describe('TokenLock Contract Tests', function() {
             "User is not migrated, needs to throw error")
     });
 
+
+    it("[Calculation check against Matrix] - Should have the final amount the same as expected in lock table", async () => {
+        testConfig.accounts.forEach(async (account) => {
+            await account.transactions.set.forEach(async (transaction) => {
+                    await tokenLockContractInstance.migrate(account.name, account.permissions.owner.publicKey)
+                    await tokenLockContractInstance.add(account.name,
+                        transaction.id, 0, transaction.datetime,
+                        transaction.algorithm.replace("algorithm", ""),
+                        transaction.amount)
+                    await tokenLockContractInstance.refresh(account.name, transaction.id)
+                }
+            )
+            let sum = await getTable(config.tokenLockContract, account.name,
+                'locks', limit = 100).rows.reduce((sum, value) => {
+                    sum + Number.parseInt(value.available.split(" "))
+                }, 0
+            )
+            assert.strictEqual(sum, account.transactions.finalAmount, 'Balance value does not match to expected one '
+                + account.transactions.finalAmount)
+        })
+    });
 
     it("[Withdraw] - Should withdraw to " + config.accounts[2].name + " and update locks table(not full)", async () => {
 

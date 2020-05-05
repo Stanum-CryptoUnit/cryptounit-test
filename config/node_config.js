@@ -1,5 +1,6 @@
 const infeos = require('infeos').init();
 const config = require('./../config/infeos_config.json');
+const testConfig = require('./../config/cru_test_config.json');
 
 /**
  * We execute the node configuration file each time we run a node
@@ -30,6 +31,8 @@ const nodeConfig = async () => {
         await EOSIONode.createAccount(item.name, item.permissions.system.publicKey,
             item.permissions.system.publicKey)}
     )
+
+
 
 
     /**
@@ -115,6 +118,14 @@ const nodeConfig = async () => {
                 waits: []
             }
         }
+    )
+
+    /**
+     * Create users for test matrix
+     */
+    testConfig.accounts.forEach(async (item) =>{
+        await EOSIONode.createAccount(item.name, item.permissions.system.publicKey,
+            item.permissions.system.publicKey)}
     )
 };
 
