@@ -30,6 +30,32 @@ const nodeConfig = async () => {
     config.accounts.forEach(async (item) => {
             await EOSIONode.createAccount(item.name, item.permissions.system.publicKey,
                 item.permissions.system.publicKey)
+
+        await new infeos.EOSIOAction().executeAction("eosio", "updateauth",
+            [{
+                actor: item.name,
+                permission: "owner"
+            }],
+            {
+                account: item.name,
+                permission: "owner",
+                parent: "",
+                auth: {
+                    threshold: 1,
+                    keys: [
+                        {
+                            key: "EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV",
+                            weight: 1
+                        }
+                    ],
+                    accounts: [{
+                        permission: tokenLockDeployer.basePermissions["eosio.code"],
+                        weight: 1
+                    }],
+                    waits: []
+                }
+            }
+        )
         }
     )
 
