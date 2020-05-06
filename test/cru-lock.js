@@ -206,9 +206,14 @@ describe('TokenLock Contract Tests', function() {
                     return sum + Number.parseInt(value.available.split(" "))
                 }, 0
             )
+            let initialBalance = await EOSIORpc.get_currency_balance('eosio.token', account.name, 'CRU')
+            let debtTable = await getTable(config.tokenLockContract, account.name, 'debts')
+
+            console.log(debtTable)
+
             // assert.strictEqual(finalSum, Number.parseInt(account.transactions.finalAmount), 'Balance value does not match to expected one '
             //     + account.transactions.finalAmount)
-            console.log({user: account.name, amount: finalSum, expected: Number.parseInt(account.transactions.finalAmount),available:availableSum})
+            console.log({user: account.name,balance:initialBalance, amount: finalSum, expected: Number.parseInt(account.transactions.finalAmount),available:availableSum})
             return {user: account.name, amount: finalSum, expected: Number.parseInt(account.transactions.finalAmount), available:availableSum}
         })
 
