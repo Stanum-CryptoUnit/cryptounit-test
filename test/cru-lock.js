@@ -147,10 +147,6 @@ describe('TokenLock Contract Tests', function() {
     });
 
     it("[Refresh-Eligible for distribution] - Refresh locks for user  " + config.accounts[2].name + " and period 1", async () => {
-        let initialUsers = await getTable(config.tokenLockContract, config.accounts[2].name, 'locks')
-        let startDate = new Date()
-        assert.strictEqual(initialUsers.rows.length, 1, 'User needs to be migrated, ' +
-            'please call migrate firts')
         await tokenLockContractInstance.refresh(config.accounts[2].name, await getNextHistoryId(config.accounts[2].name))
         let lockTable = await getLastTransactionId(config.tokenLockContract, config.accounts[2].name, 'locks')
         //Checking for last_distribution_at
@@ -171,7 +167,7 @@ describe('TokenLock Contract Tests', function() {
 
     it("[Calculation check against Matrix] - Should have the final amount the same as expected in lock table", async () => {
         let calculation = async () => {
-            let rs = new Array()
+            let rs = []
             for(var userIndex in testConfig.accounts) {
                 let account = testConfig.accounts[userIndex]
 
