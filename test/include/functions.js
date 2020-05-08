@@ -14,6 +14,7 @@ const getLastTransactionId = async (code, scope, table) => {
         reverse: false,
         show_payer: false
     })
+    console.log(res)
     return res.rows.length > 0 ? res.rows[res.rows.length - 1] : null
 }
 

@@ -133,9 +133,11 @@ describe('TokenLock Contract Tests', function() {
     it("[Migrate] - Should migrate  " + config.accounts[1].name, async () => {
         [1, 2, 3, 4].forEach(async (index) => {
             await tokenLockContractInstance.migrate(config.accounts[index].name, config.accounts[index].permissions.owner.publicKey)
-            let user = await getLastTransactionId(config.tokenLockContract, config.accounts[index].name, 'users')
+            await delay(500)
+            let user = await getLastTransactionId(config.tokenLockContract, config.tokenLockContract, 'users')
             assert.strictEqual(user.username, config.accounts[index].name, 'User ' + config.accounts[index].name + ' is not migrated')
         })
+
     });
 
     it("[Refresh - Not - Migrated] - Refresh locks for user  unknown should failed", async () => {
@@ -160,7 +162,7 @@ describe('TokenLock Contract Tests', function() {
         let startDate = new Date()
         assert.strictEqual(initialUsers.rows.length, 1, 'User needs to be migrated, ' +
             'please call migrate first')
-        await tokenLockContractInstance.refresh(config.accounts[3].name, getNextHistoryId(config.accounts[2].name))
+        await tokenLockContractInstance.refresh(config.accounts[3].name, await getNextHistoryId(config.accounts[2].name))
         let lockTable = await getLastTransactionId(config.tokenLockContract, config.accounts[2].name, 'locks')
         //Checking for last_distribution_at
         assert(startDate < new Date(lockTable.last_distribution_at))
@@ -168,61 +170,68 @@ describe('TokenLock Contract Tests', function() {
 
 
     it("[Calculation check against Matrix] - Should have the final amount the same as expected in lock table", async () => {
-        for(var userIndex in testConfig.accounts) {
-            let account = testConfig.accounts[userIndex]
+        let calculation = async () => {
+            let rs = new Array()
+            for(var userIndex in testConfig.accounts) {
+                let account = testConfig.accounts[userIndex]
 
-            let transactions = account.transactions.set
-            for(var i in transactions) {
-                await delay(500)
-                await tokenLockContractInstance.add(account.name,
-                    transactions[i].id, 0, transactions[i].datetime,
-                    transactions[i].algorithm.replace("algorithm", ""),
-                    transactions[i].amount)
-                await delay(500)
-            }
-
-            await tokenLockContractInstance.migrate(account.name, account.permissions.owner.publicKey)
-
-            for(var i in transactions) {
-                await delay(500)
-                if(transactions[i].algorithm.replace("algorithm", "") !== "0") {
-                    await tokenLockContractInstance.refresh(account.name, transactions[i].id)
+                let transactions = account.transactions.set
+                for(var i in transactions) {
+                    await delay(500)
+                    await tokenLockContractInstance.add(account.name,
+                        transactions[i].id, 0, transactions[i].datetime,
+                        transactions[i].algorithm.replace("algorithm", ""),
+                        transactions[i].amount)
                     await delay(500)
                 }
+
+                await tokenLockContractInstance.migrate(account.name, account.permissions.owner.publicKey)
+
+                for(var i in transactions) {
+                    await delay(500)
+                    if(transactions[i].algorithm.replace("algorithm", "") !== "0") {
+                        await tokenLockContractInstance.refresh(account.name, transactions[i].id)
+                        await delay(500)
+                    }
+                }
+
+
+                let locks = await getTable(config.tokenLockContract, account.name,
+                    'locks', limit = 100)
+
+                let initialBalance = await EOSIORpc.get_currency_balance('eosio.token', account.name, 'CRU')
+                let debtTable = await getTable(config.tokenLockContract, account.name, 'debts')
+                let stats = locks.rows.reduce((sum, value) => {
+                        sum.amount += Number.parseInt(value.amount.split(" ")[0])
+                        sum.available += Number.parseInt(value.available.split(" ")[0])
+                        sum.withdrawed += Number.parseInt(value.withdrawed.split(" ")[0])
+                        return sum
+                    }, {available: 0, amount: 0, withdrawed: 0}
+                )
+
+                let assertObject = {
+                    user: account.name,
+                    actualBalance: initialBalance,
+                    amount: stats.amount,
+                    available: stats.available,
+                    withdrawed: stats.withdrawed,
+                    expected: Number.parseInt(account.transactions.finalAmount),
+                    totalAvailable: Number.parseInt((initialBalance.length > 0 ? initialBalance[0].split(" ")[0] : 0)) + stats.available,
+                    debt: debtTable.rows.length === 1 ? debtTable.rows[0].amount : 0
+                }
+
+                rs.push(assertObject)
             }
-
-
-            let locks = await getTable(config.tokenLockContract, account.name,
-                'locks', limit = 100)
-
-            let initialBalance = await EOSIORpc.get_currency_balance('eosio.token', account.name, 'CRU')
-            let debtTable = await getTable(config.tokenLockContract, account.name, 'debts')
-            let stats = locks.rows.reduce((sum, value) => {
-                    sum.amount += Number.parseInt(value.amount.split(" ")[0])
-                    sum.available += Number.parseInt(value.available.split(" ")[0])
-                    sum.withdrawed += Number.parseInt(value.withdrawed.split(" ")[0])
-                    return sum
-                }, {available: 0, amount: 0, withdrawed: 0}
-            )
-
-            let assertObject = {
-                user: account.name,
-                actualBalance: initialBalance,
-                amount: stats.amount,
-                available: stats.available,
-                withdrawed: stats.withdrawed,
-                expected: Number.parseInt(account.transactions.finalAmount),
-                totalAvailable: Number.parseInt((initialBalance.length > 0 ? initialBalance[0].split(" ")[0] : 0)) + stats.available,
-                debt: debtTable.rows.length === 1 ? debtTable.rows[0].amount : 0
-            }
-
-            console.log(assertObject)
-            assert.strictEqual(assertObject.totalAvailable, Number.parseInt(account.transactions.finalAmount), 'Balance value does not match to expected one '
-                + account.transactions.finalAmount)
+            return rs
         }
+        let results = await calculation()
+        console.log(results)
+        results.forEach((rs)=>{
+            assert.strictEqual(rs.totalAvailable, rs.expected, 'Balance value does not match to expected one '
+                + rs.expected)
+        })
 
-
-    });
+    }).timeout(10000000)
 
     // it("[Withdraw] - Should withdraw to " + config.accounts[2].name + " and update locks table(not full)", async () => {
     //
