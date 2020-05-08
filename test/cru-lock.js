@@ -138,26 +138,25 @@ describe('TokenLock Contract Tests', function() {
         })
     });
 
-    it("[Refresh - Not - Migrated] - Refresh locks for user  " + config.accounts[1].name + " should failed", async () => {
-        await assertThrowsAsync(async () => tokenLockContractInstance.refresh(config.accounts[1].name,
-            await getNextHistoryId(config.accounts[1].name)),
+    it("[Refresh - Not - Migrated] - Refresh locks for user  unknown should failed", async () => {
+        await assertThrowsAsync(async () => tokenLockContractInstance.refresh("unknown", 0),
             "assertion failure with message: User is not migrated",
             "User is not migrated, needs to throw error")
     });
 
     it("[Refresh-Eligible for distribution] - Refresh locks for user  " + config.accounts[2].name + " and period 1", async () => {
-        let initialUsers = getTable(config.tokenLockContract, config.accounts[2].name, 'locks')
+        let initialUsers = await getTable(config.tokenLockContract, config.accounts[2].name, 'locks')
         let startDate = new Date()
         assert.strictEqual(initialUsers.rows.length, 1, 'User needs to be migrated, ' +
             'please call migrate firts')
-        await tokenLockContractInstance.refresh(config.accounts[2].name, getNextHistoryId(config.accounts[2].name))
+        await tokenLockContractInstance.refresh(config.accounts[2].name, await getNextHistoryId(config.accounts[2].name))
         let lockTable = await getLastTransactionId(config.tokenLockContract, config.accounts[2].name, 'locks')
         //Checking for last_distribution_at
         assert(startDate < new Date(lockTable.last_distribution_at))
     });
 
     it("[Refresh-Eligible for distribution] - Refresh locks for user  " + config.accounts[3].name + " and period 2", async () => {
-        let initialUsers = getTable(config.tokenLockContract, config.accounts[2].name, 'locks')
+        let initialUsers = await getTable(config.tokenLockContract, config.accounts[3].name, 'locks')
         let startDate = new Date()
         assert.strictEqual(initialUsers.rows.length, 1, 'User needs to be migrated, ' +
             'please call migrate first')
@@ -168,18 +167,10 @@ describe('TokenLock Contract Tests', function() {
     });
 
 
-    it("[Refresh] - Refresh locks for unknown user ", async () => {
-        await assertThrowsAsync(async () => tokenLockContractInstance.refresh(config.accounts[1].name,
-            await getNextHistoryId(config.accounts[5].name)),
-            "assertion failure with message: User is not migrated",
-            "User is not migrated, needs to throw error")
-    });
-
-
     it("[Calculation check against Matrix] - Should have the final amount the same as expected in lock table", async () => {
-        let balance = await EOSIORpc.get_currency_balance('eosio.token', account.name, 'CRU')
-        console.log(balance)
-        await testConfig.accounts.map(async (account) => {
+        for(var userIndex in testConfig.accounts) {
+            let account = testConfig.accounts[userIndex]
+
             let transactions = account.transactions.set
             for(var i in transactions) {
                 await delay(500)
@@ -214,19 +205,7 @@ describe('TokenLock Contract Tests', function() {
                 }, {available: 0, amount: 0, withdrawed: 0}
             )
 
-            // assert.strictEqual(finalSum, Number.parseInt(account.transactions.finalAmount), 'Balance value does not match to expected one '
-            //     + account.transactions.finalAmount)
-            console.log({
-                user: account.name,
-                actualBalance: initialBalance,
-                amount: stats.amount,
-                available: stats.available,
-                withdrawed: stats.withdrawed,
-                expected: Number.parseInt(account.transactions.finalAmount),
-                totalAvailable: Number.parseInt((initialBalance.length > 0 ? initialBalance[0].split(" ")[0] : 0)) + stats.available,
-                debt: debtTable.rows.length === 1 ? debtTable.rows[0].amount : 0
-            })
-            return {
+            let assertObject = {
                 user: account.name,
                 actualBalance: initialBalance,
                 amount: stats.amount,
@@ -236,7 +215,12 @@ describe('TokenLock Contract Tests', function() {
                 totalAvailable: Number.parseInt((initialBalance.length > 0 ? initialBalance[0].split(" ")[0] : 0)) + stats.available,
                 debt: debtTable.rows.length === 1 ? debtTable.rows[0].amount : 0
             }
-        })
+
+            console.log(assertObject)
+            assert.strictEqual(assertObject.totalAvailable, Number.parseInt(account.transactions.finalAmount), 'Balance value does not match to expected one '
+                + account.transactions.finalAmount)
+        }
+
 
     });
 

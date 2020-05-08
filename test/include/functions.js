@@ -28,6 +28,7 @@ module.exports = {
         } catch(e) {
             exception = e;
         }
+
         if((exception ? exception.json.error.details[0].message : exception) !== error)
             throw new AssertionError("Exception:" + error + " should be raised")
 
